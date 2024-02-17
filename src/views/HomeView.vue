@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import ProductList from '../components/ProductList.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
+  <main class="h-screen w-screen absolute bg-gray-200 dark:bg-gray-900">
+    <ProductList />
   </main>
 </template>
