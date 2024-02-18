@@ -1,9 +1,9 @@
 import { test, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
-import ProductItem from '../ProductItem.vue'
+import CartItem from '../CartItem.vue'
 
 test('render product item', () => {
-  const wrapper = mount(ProductItem, {
+  const wrapper = mount(CartItem, {
     props: {
       product: {
         name: 'Product Name Test',

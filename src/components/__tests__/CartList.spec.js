@@ -1,7 +1,7 @@
 import { vi, describe, it, expect, beforeEach } from 'vitest'
 import { flushPromises, mount } from '@vue/test-utils'
 import axiosWrapper from '@/stores/axios-wrapper'
-import ProductList from '../ProductList.vue'
+import CardList from '../CardList.vue'
 import { createPinia, setActivePinia } from 'pinia'
 
 const mockProducts = [
@@ -15,7 +15,7 @@ const mockProducts = [
   }
 ]
 
-describe('ProductList', () => {
+describe('CardList', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
     setActivePinia(createPinia())
@@ -27,7 +27,7 @@ describe('ProductList', () => {
         data: mockProducts
       })
     )
-    const wrapper = mount(ProductList)
+    const wrapper = mount(CardList)
 
     expect(spy).toHaveBeenCalledTimes(1)
     expect(spy).toBeCalledWith('products')
