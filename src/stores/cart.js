@@ -16,11 +16,22 @@ export const useCartStore = defineStore('cart', () => {
     return products.value.reduce((acc, product) => acc + product.quantity, 0)
   })
 
+  const isEmpty = computed(() => {
+    return products.value.length == 0
+  })
+
   function checkout() {
+    const data = products.value.map(line => ({
+      product: line.id,
+      quantity: line.quantity
+    }))
+
     loading.value = true
     error.value = null
     axiosWrapper
-      .get(CHECKOUT)
+      .post(CHECKOUT, {
+        products: data
+      })
       .then(() => {
         products.value = []
       })
@@ -44,13 +55,19 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
+  function deleteItem(product) {
+    products.value = products.value.filter(p => p.id != product.id)
+  }
+
   return {
     products,
     loading,
     totalCart,
     countCart,
+    isEmpty,
 
     checkout,
-    addProduct
+    addProduct,
+    deleteItem
   }
 })
